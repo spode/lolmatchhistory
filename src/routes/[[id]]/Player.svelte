@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { gameModes } from '$lib/gameModes';
 	import type { RiotAPITypes } from '@fightmegg/riot-api';
 	import dayjs from '$lib/helpers';
 	let {
@@ -31,6 +32,12 @@
 		const SS = `${Math.floor(seconds % 60)}`.padStart(2, '0');
 		return [MM, SS].join(':');
 	};
+
+	// Function to find description by gameMode
+	function getDescription(gameMode) {
+		const match = gameModes.find((mode) => mode.gameMode === gameMode);
+		return match ? match.description.replace('games', '').trim() : 'unknown';
+	}
 </script>
 
 {#snippet accountSummoner(
@@ -79,7 +86,8 @@
 									{participant.win ? 'Victory' : 'Defeat'}
 								</div>
 								<div>{dayjs(match.info.gameEndTimestamp).fromNow()}</div>
-								<div>{match.info.gameMode}</div>
+
+								<div>{getDescription(match.info.gameMode)}</div>
 								<div>{secondsToHHMMSS(match.info.gameDuration)}</div>
 							</div>
 						</div>
