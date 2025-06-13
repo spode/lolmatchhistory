@@ -57,7 +57,7 @@
 	</div>
 {/snippet}
 
-<div class="flex h-full flex-col">
+<div class="">
 	{@render accountSummoner(playerData.account, playerData.summoner)}
 
 	<div class="flex h-full flex-col divide-y-2 divide-gray-800 overflow-auto px-1">
@@ -87,7 +87,11 @@
 								</div>
 								<div>{dayjs(match.info.gameEndTimestamp).fromNow()}</div>
 
-								<div>{getDescription(match.info.gameMode)}</div>
+								<div>
+									{match.info.gameType == 'MATCHED_GAME'
+										? getDescription(match.info.gameMode)
+										: 'botgame'}
+								</div>
 								<div>{secondsToHHMMSS(match.info.gameDuration)}</div>
 							</div>
 						</div>

@@ -4,10 +4,10 @@
 	let { children } = $props();
 </script>
 
-<div class="flex h-full flex-col overflow-auto px-4">
+<div class="flex h-full flex-col items-center overflow-auto px-4">
 	{@render children()}
 </div>
 
 <svelte:head>
-	<title>are we tilted</title>
+	<title>banana lol!</title>
 </svelte:head>

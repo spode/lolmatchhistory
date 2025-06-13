@@ -4,7 +4,7 @@
 </script>
 
 <form
-	class="group block flex-1 space-y-3 rounded-lg p-4 shadow-lg ring-1 ring-gray-900/5 dark:bg-white/5 dark:ring-white/10"
+	class="group block w-full flex-1 space-y-3 rounded-lg p-4 shadow-lg ring-1 ring-gray-900/5 dark:bg-white/5 dark:ring-white/10"
 	method="POST"
 	action="?/create"
 	use:enhance={() => {
