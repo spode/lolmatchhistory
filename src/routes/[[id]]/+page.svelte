@@ -19,7 +19,7 @@
 
 <Form />
 
-<div class="grid auto-cols-max grid-flow-col">
+<div class="grid auto-cols-max grid-flow-col overflow-auto px-4" style="scrollbar-gutter: stable;">
 	{#each data.matchesDataDB.players as playerData}
 		<Player {playerData} />
 	{/each}

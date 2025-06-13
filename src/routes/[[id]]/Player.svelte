@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { gameModes } from '$lib/gameModes';
+	import { queues } from '$lib/queues';
 	import type { RiotAPITypes } from '@fightmegg/riot-api';
 	import dayjs from '$lib/helpers';
 	let {
@@ -37,6 +38,12 @@
 	function getDescription(gameMode) {
 		const match = gameModes.find((mode) => mode.gameMode === gameMode);
 		return match ? match.description.replace('games', '').trim() : 'unknown';
+	}
+
+	// Function to find description by gameMode
+	function getQueueInfo(queueId) {
+		const match = queues.find((mode) => mode.queueId === queueId);
+		return match;
 	}
 </script>
 
@@ -87,10 +94,16 @@
 								</div>
 								<div>{dayjs(match.info.gameEndTimestamp).fromNow()}</div>
 
-								<div>
+								<!-- <div>
 									{match.info.gameType == 'MATCHED_GAME'
 										? getDescription(match.info.gameMode)
 										: 'botgame'}
+								</div> -->
+								<div>
+									{getQueueInfo(match.info.queueId)
+										?.description?.replace('5v5', '')
+										.replace('games', '')
+										.trim()}
 								</div>
 								<div>{secondsToHHMMSS(match.info.gameDuration)}</div>
 							</div>
